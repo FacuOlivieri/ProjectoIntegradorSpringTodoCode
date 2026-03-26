@@ -24,11 +24,14 @@ public class Sucursal {
     private String direccionSucursal;
     private String ciudadSucursal;
     private String telefonoSucursal;
+    private Double ingresosSucursal;
+
+    /*
+     * Puedes hacer la relación bidireccional con List si quieres
+     */
 
     @OneToMany(mappedBy = "sucursal")
     private List<Venta> listaVentas;
-
-    private Double ingresosSucursal;
 
 
 }

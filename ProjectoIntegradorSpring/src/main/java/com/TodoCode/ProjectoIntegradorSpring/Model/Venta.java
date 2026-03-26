@@ -28,8 +28,12 @@ public class Venta {
     @ManyToOne
     @JoinColumn(name = "idSucursal")
     private Sucursal sucursal;
-    private List<Producto> listaProductosAVender;
 
+    /*
+     * Puedes hacer la relación bidireccional con List si quieres
+     */
+
+    private List<Producto> listaProductosAVender;
 
 
 }

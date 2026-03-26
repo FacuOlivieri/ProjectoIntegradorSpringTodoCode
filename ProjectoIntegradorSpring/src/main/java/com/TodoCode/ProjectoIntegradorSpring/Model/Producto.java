@@ -23,7 +23,7 @@ public class Producto {
     private Long idProducto;
     private String nombreProducto;
     private String categoriaProducto;
-    private String marcaProducto;
+    private String marcaProducto;       //En el futuro, ¿Marca como nueva Entidad?
     private String descripcionProducto;
     private Double precioProducto;
     private Integer stockProducto;

@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductoController {
 
     /*
-    Metodo GET
+    Método: GET
     Path: /api/productos
     Listar productos registrados
      */
-///////
+
+    ///////
 
     /*
     Metodo: POST
@@ -27,8 +28,8 @@ public class ProductoController {
      */
     ///////
     /*
-    * Metodo: DELETE
-    * Eliminar un producto
-    * */
+     * Metodo: DELETE
+     * Eliminar un producto
+     * */
 
 }
