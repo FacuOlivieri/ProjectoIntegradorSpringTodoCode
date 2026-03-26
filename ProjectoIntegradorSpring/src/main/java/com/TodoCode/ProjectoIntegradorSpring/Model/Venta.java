@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Component
@@ -24,6 +23,7 @@ public class Venta {
     private Long idVenta;
     private LocalDate fecha;
     private EstadoVenta estado;
+    private Double precioTotalVenta;
 
     @ManyToOne
     @JoinColumn(name = "idSucursal")
@@ -33,7 +33,7 @@ public class Venta {
      * Puedes hacer la relación bidireccional con List si quieres
      */
 
-    private List<Producto> listaProductosAVender;
+    //private List<Producto> listaProductosAVender;
 
 
 }

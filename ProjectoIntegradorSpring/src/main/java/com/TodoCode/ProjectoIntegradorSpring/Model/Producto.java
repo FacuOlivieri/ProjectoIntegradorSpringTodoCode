@@ -26,6 +26,7 @@ public class Producto {
     private String marcaProducto;       //En el futuro, ¿Marca como nueva Entidad?
     private String descripcionProducto;
     private Double precioProducto;
+    private Integer cantidadProducto;
     private Integer stockProducto;
 
 }

@@ -7,16 +7,13 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
 @AllArgsConstructor
-public class ProductoDTO {
+@NoArgsConstructor
+public class DetalleVentaDTO {
 
     private Long id;
-    private String nombre;
-    private String categoria;
-    private String marca;
-    private Double subtotal;
-    private Integer cantidad;
-    private Integer stock;
-
+    private String nombreProductoAsociado;
+    private Integer cantidadProducto;
+    private Double precio;
+    private Double subtotal;        /// Campo calculado (cantidad * precio)
 }
