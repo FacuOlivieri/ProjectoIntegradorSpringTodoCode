@@ -26,7 +26,7 @@ public class DetalleVenta {
 
     @ManyToOne
     @JoinColumn(name = "idVenta")
-    private Venta ventaAsociada;
+    private Venta ventaAsociada;    //Con esta bidireccionalidad, no hace falta hacer el Repository de DetalleVenta
 
     /*
      * Puedes hacer la relación bidireccional con List si quieres
@@ -37,6 +37,6 @@ public class DetalleVenta {
     private Producto producto;
 
     private Integer cantidadProducto;
-    private Double precioUnitarioProducto;
+    private Double precioProducto;
 
 }

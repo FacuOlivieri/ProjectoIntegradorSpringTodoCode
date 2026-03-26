@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Component
@@ -32,6 +34,10 @@ public class Venta {
     /*
      * Puedes hacer la relación bidireccional con List si quieres
      */
+
+
+    @OneToMany(mappedBy = "ventaAsociada")
+    private List<DetalleVenta> detalleDeVenta = new ArrayList<>(); //Con esta bidireccionalidad, no hace falta hacer el Repository de DetalleVenta
 
     //private List<Producto> listaProductosAVender;
 
