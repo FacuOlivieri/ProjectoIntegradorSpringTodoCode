@@ -17,6 +17,5 @@ public class ProductoDTO {
     private String marca;
     private Double subtotal;
     private Integer cantidad;
-    private Integer stock;
 
 }
