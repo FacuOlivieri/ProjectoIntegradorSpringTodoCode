@@ -2,18 +2,18 @@ package com.TodoCode.ProjectoIntegradorSpring.DTO;
 
 import com.TodoCode.ProjectoIntegradorSpring.Enums.EstadoVenta;
 import com.TodoCode.ProjectoIntegradorSpring.Model.DetalleVenta;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.TodoCode.ProjectoIntegradorSpring.Model.Venta;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class VentaDTO {
 
     //Detalle Venta
@@ -25,9 +25,41 @@ public class VentaDTO {
     private Long numeroSucursal;
 
     //Detalle DETALLE VENTA
-    private List<DetalleVenta> detalle;
-
+    private List<DetalleVentaDTO> detalle;
 
     private Double precioTotal;
 
+
+    public void calcularTotal(List<DetalleVentaDTO> listaItems){
+        for (DetalleVentaDTO item: listaItems){
+            precioTotal += item.getSubtotal();
+        }
+    }
+
+    public void asignarValoresVentaDTO(VentaDTO ventaDTO, Venta ventaAsociada){
+
+
+        ventaDTO.setId(ventaAsociada.getIdVenta());
+        ventaDTO.setFecha(ventaAsociada.getFecha());
+        ventaDTO.setEstado(ventaAsociada.getEstado());
+        ventaDTO.setNumeroSucursal(ventaAsociada.getSucursal().getIdSucursal());
+
+        if (ventaAsociada.getDetalleDeVenta() != null){
+            for (DetalleVenta detalleVenta : ventaAsociada.getDetalleDeVenta()) {
+                DetalleVentaDTO detalleVentaDTO = new DetalleVentaDTO();
+                detalleVentaDTO.setId(detalleVenta.getIdDetalleVenta());
+                detalleVentaDTO.setNombreProductoAsociado(detalleVenta.getProducto().getNombreProducto());
+                detalleVentaDTO.setCantidadProducto(detalleVenta.getCantidadProducto());
+                detalleVentaDTO.setPrecio(detalleVenta.getPrecioProducto());
+                detalleVentaDTO.calcularSubtotal();
+                detalle.add(detalleVentaDTO);
+            }
+
+            this.calcularTotal(detalle);
+        }
+
+
+
+
+    }
 }

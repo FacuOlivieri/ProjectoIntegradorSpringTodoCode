@@ -37,9 +37,9 @@ public class Venta {
 
 
     @OneToMany(mappedBy = "ventaAsociada")
-    private List<DetalleVenta> detalleDeVenta = new ArrayList<>(); //Con esta bidireccionalidad, no hace falta hacer el Repository de DetalleVenta
+    private List<DetalleVenta> detalleDeVenta = new ArrayList<>();
+    //Con esta bi direccionalidad, no hace falta hacer el Repository de DetalleVenta
 
-    //private List<Producto> listaProductosAVender;
 
 
 }

@@ -1,14 +1,13 @@
 package com.TodoCode.ProjectoIntegradorSpring.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.TodoCode.ProjectoIntegradorSpring.Model.Producto;
+import lombok.*;
 
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ProductoDTO {
 
     private Long id;
@@ -17,5 +16,6 @@ public class ProductoDTO {
     private String marca;
     private Double subtotal;
     private Integer cantidad;
+
 
 }

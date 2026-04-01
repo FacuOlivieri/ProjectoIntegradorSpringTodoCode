@@ -1,5 +1,6 @@
 package com.TodoCode.ProjectoIntegradorSpring.Service;
 
+import com.TodoCode.ProjectoIntegradorSpring.DTO.VentaDTO;
 import com.TodoCode.ProjectoIntegradorSpring.Model.Venta;
 import com.TodoCode.ProjectoIntegradorSpring.Repository.IVentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,28 +16,22 @@ public class VentaService implements IVentaService {
 
 
     @Override
-    public void crearVenta(Venta ventaNueva) {
-        ventaRepository.save(ventaNueva);
+    public List<VentaDTO> traerVentas() {
+        return List.of();
     }
 
     @Override
-    public Venta encontrarVenta(Long idVenta) {
-        return ventaRepository.findById(idVenta).orElse(null);
+    public VentaDTO crearVenta(VentaDTO ventaNueva) {
+        return null;
     }
 
     @Override
-    public List<Venta> traerVentas() {
-        return ventaRepository.findAll();
+    public VentaDTO actualizarVenta(Long id, VentaDTO ventaAActualizar) {
+        return null;
     }
 
     @Override
-    public Venta editarVenta(Venta ventaEditada) {
-        ventaRepository.save(ventaEditada);
-        return this.encontrarVenta(ventaEditada.getIdVenta());
-    }
+    public void eliminarVenta(Long id) {
 
-    @Override
-    public void eliminarVenta(Long idVenta) {
-        ventaRepository.deleteById(idVenta);
     }
 }

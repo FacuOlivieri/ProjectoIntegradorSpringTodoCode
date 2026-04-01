@@ -7,19 +7,15 @@ import java.util.List;
 
 public interface ISucursalService {
 
-    void crearSucursal(Sucursal sucursalNueva);
-
+    SucursalDTO crearSucursal(SucursalDTO sucursalNueva);
     Sucursal encontrarSucursal(Long idSucursal);
-
-    List<Sucursal> traerSucursales();
-
-    Sucursal editarSucursal(Sucursal sucursalEditada);
-
+    List<SucursalDTO> traerSucursales();
+    SucursalDTO editarSucursal(Long id, SucursalDTO sucursalEditada);
     void eliminarSucursal(Long idSucursal);
 
-    SucursalDTO devolverDatosSucursalDTO(Sucursal sucursal);
 
-    Double calcularIngresoSucursalConcreta(Long idSucursal);
 
-    Double calcularIngresoTotalSupermercado();
+    //Double calcularIngresoSucursalConcreta(Long idSucursal);
+
+    //Double calcularIngresoTotalSupermercado();
 }
