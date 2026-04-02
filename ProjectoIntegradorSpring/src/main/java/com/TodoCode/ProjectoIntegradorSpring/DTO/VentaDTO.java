@@ -20,13 +20,8 @@ public class VentaDTO {
     private Long id;
     private LocalDate fecha;
     private EstadoVenta estado;
-
-    //Detalle SUCURSAL
-    private Long numeroSucursal;
-
-    //Detalle DETALLE VENTA
-    private List<DetalleVentaDTO> detalle;
-
+    private Long numeroSucursal;            //Detalle SUCURSAL
+    private List<DetalleVentaDTO> detalle;  //Detalle DETALLE VENTA
     private Double precioTotal;
 
 

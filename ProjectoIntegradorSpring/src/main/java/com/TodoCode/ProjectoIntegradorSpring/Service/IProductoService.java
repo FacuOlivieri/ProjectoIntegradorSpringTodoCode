@@ -8,7 +8,7 @@ import java.util.List;
 public interface IProductoService {
 
     List<ProductoDTO> traerProductos();
-    ProductoDTO crearProducto(ProductoDTO productoDTO);
-    ProductoDTO modificarProducto(Long idProducto, ProductoDTO productoDTO);
+    ProductoDTO crearProducto(Producto producto);
+    ProductoDTO modificarProducto(Long idProducto, Producto producto);
     void eliminarProducto(Long idProducto);
 }

@@ -1,6 +1,8 @@
 package com.TodoCode.ProjectoIntegradorSpring.Service;
 
 import com.TodoCode.ProjectoIntegradorSpring.DTO.SucursalDTO;
+import com.TodoCode.ProjectoIntegradorSpring.Exception.NotFoundException;
+import com.TodoCode.ProjectoIntegradorSpring.Mapper.Mapper;
 import com.TodoCode.ProjectoIntegradorSpring.Model.Sucursal;
 import com.TodoCode.ProjectoIntegradorSpring.Model.Venta;
 import com.TodoCode.ProjectoIntegradorSpring.Repository.ISucursalRepository;
@@ -19,41 +21,46 @@ public class SucursalService implements ISucursalService {
 
     @Override
     public SucursalDTO crearSucursal(SucursalDTO sucursalNueva) {
-        return null;
+        Sucursal sucursal = Sucursal.builder()
+                .idSucursal(sucursalNueva.getId())
+                .nombreSucursal(sucursalNueva.getNombre())
+                .direccionSucursal(sucursalNueva.getDireccion())
+                .ciudadSucursal(sucursalNueva.getCiudad())
+                .telefonoSucursal(sucursalNueva.getTelefono())
+                .ingresosSucursal(0D)
+                .build();
+
+        return Mapper.toSucursalDTO(sucursalRepository.save(sucursal));
     }
 
     @Override
     public Sucursal encontrarSucursal(Long idSucursal) {
-        return sucursalRepository.findById(idSucursal).orElse(null);
+        return sucursalRepository.findById(idSucursal).orElseThrow(() -> new NotFoundException("Sucursal no encontrada"));
     }
 
     @Override
     public List<SucursalDTO> traerSucursales() {
-        List<Sucursal> sucursales = sucursalRepository.findAll();
-        List<SucursalDTO> sucursalDTOS = new ArrayList<>();
-
-        for (Sucursal sucursal : sucursales) {
-            SucursalDTO sucursalDTO = new SucursalDTO();
-            sucursalDTO.setId(sucursal.getIdSucursal());
-            sucursalDTO.setNombre(sucursal.getNombreSucursal());
-            sucursalDTO.setDireccion(sucursal.getDireccionSucursal());
-            sucursalDTO.setCiudad(sucursal.getCiudadSucursal());
-            sucursalDTO.setTelefono(sucursal.getTelefonoSucursal());
-            sucursalDTOS.add(sucursalDTO);
-        }
-
-        return sucursalDTOS;
+        return sucursalRepository.findAll().stream()
+                .map(Mapper::toSucursalDTO)
+                .toList();
     }
 
     @Override
     public SucursalDTO editarSucursal(Long id, SucursalDTO sucursalEditada) {
         Sucursal sucursalAEditar = this.encontrarSucursal(id);
+        sucursalAEditar.setNombreSucursal(sucursalEditada.getNombre());
+        sucursalAEditar.setDireccionSucursal(sucursalEditada.getDireccion());
+        sucursalAEditar.setCiudadSucursal(sucursalEditada.getCiudad());
+        sucursalAEditar.setTelefonoSucursal(sucursalEditada.getTelefono());
 
-        return null;
+        return Mapper.toSucursalDTO(sucursalRepository.save(sucursalAEditar));
     }
 
     @Override
     public void eliminarSucursal(Long idSucursal) {
-
+        if (!sucursalRepository.existsById(idSucursal)) {
+            throw new NotFoundException("Sucursal no encontrada");
+        }
+        sucursalRepository.deleteById(idSucursal);
     }
 }
