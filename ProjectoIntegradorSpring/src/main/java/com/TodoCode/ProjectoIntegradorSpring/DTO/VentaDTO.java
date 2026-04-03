@@ -31,7 +31,7 @@ public class VentaDTO {
         }
     }
 
-    public void asignarValoresVentaDTO(VentaDTO ventaDTO, Venta ventaAsociada){
+/*    public void asignarValoresVentaDTO(VentaDTO ventaDTO, Venta ventaAsociada){
 
 
         ventaDTO.setId(ventaAsociada.getIdVenta());
@@ -56,5 +56,5 @@ public class VentaDTO {
 
 
 
-    }
+    }*/
 }

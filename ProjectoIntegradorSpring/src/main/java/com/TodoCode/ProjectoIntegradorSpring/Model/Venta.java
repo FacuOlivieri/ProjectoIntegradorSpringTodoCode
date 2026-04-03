@@ -23,7 +23,7 @@ public class Venta {
     private Long idVenta;
     private LocalDate fecha;
     private EstadoVenta estado;
-    private Double precioTotalVenta;
+
 
     @ManyToOne
     @JoinColumn(name = "idSucursal")
@@ -38,6 +38,8 @@ public class Venta {
     private List<DetalleVenta> detalleDeVenta = new ArrayList<>();
     //Con esta bi direccionalidad, no hace falta hacer el Repository de DetalleVenta
 
+
+    private Double precioTotalVenta;
 
 
 }

@@ -40,7 +40,8 @@ public class SucursalService implements ISucursalService {
 
     @Override
     public List<SucursalDTO> traerSucursales() {
-        return sucursalRepository.findAll().stream()
+        return sucursalRepository.findAll()
+                .stream()
                 .map(Mapper::toSucursalDTO)
                 .toList();
     }
